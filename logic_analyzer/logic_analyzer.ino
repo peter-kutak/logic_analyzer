@@ -577,8 +577,7 @@ void captureMicro() {
     DEBUG_ON; /* debug timing measurement */
     for (i = 0 ; i < readCount; i++) {
       logicdata[i] = CHANPIN;
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t");
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
+      __builtin_avr_nop();
     }
     DEBUG_OFF; /* debug timing measurement */
   }
@@ -590,12 +589,7 @@ void captureMicro() {
     DEBUG_ON; /* debug timing measurement */
     for (i = 0 ; i < readCount; i++) {
       logicdata[i] = CHANPIN;
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
-      __asm__("nop\n\t""nop\n\t""nop\n\t""nop\n\t");
+      __builtin_avr_delay_cycles (17);
     }
     DEBUG_OFF; /* debug timing measurement */
   }
@@ -610,7 +604,7 @@ void captureMicro() {
     for (i = 0 ; i < readCount; i++) {
       logicdata[i] = CHANPIN;
       delayMicroseconds(delayTime - 1);
-      __asm__("nop\n\t""nop\n\t");
+      //__builtin_avr_nop();
     }
     DEBUG_OFF; /* debug timing measurement */
   }
